@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         Player player1 = new Player();
         Player player2 = new Player();
         Computer computer = new Computer();
@@ -26,8 +25,8 @@ public class Main {
 
         switch (userInput) {
             case "human":
-                System.out.println("\n Whoever goes first is Player1, whoever goes second is Player2");
-                System.out.println("\nPlayer1: type in 'rock', 'paper', or 'scissors' to play and pass computer to Player2");
+                System.out.println("\n Whoever goes first is Player1, whoever goes second is Player2"+
+                                   "\nPlayer1: type in 'rock', 'paper', or 'scissors' to play and pass computer to Player2");
                 humanTurn(player1, player2, game);
                 playAgain(player1, player2, computer, game);
                 break;
@@ -37,8 +36,7 @@ public class Main {
                 playAgain(player1, player2, computer, game);
                 break;
             case "quit":
-                System.out.println("\nquitting the game");
-                System.out.println("\nBye!!");
+                System.out.println("\nquitting the game\nBye!!");
                 System.exit(0);
                 break;
             default:
@@ -56,27 +54,25 @@ public class Main {
     }
 
     private static String computerTurn(Player player, Computer computer, Game game) {
-        Scanner inputScanner = new Scanner(System.in);
-        String userInput = inputScanner.nextLine();
-        String lowerCaseInput = userInput.toLowerCase();
+        String userInput = userInput();
 
         player.setName("Player1");
 
-        if(lowerCaseInput.equals("rock") || lowerCaseInput.equals("paper") || lowerCaseInput.equals("scissors") ) {
-            player.setChoice(lowerCaseInput);
+        if(userInput.equals("rock") || userInput.equals("paper") || userInput.equals("scissors") ) {
+            player.setChoice(userInput);
+
             game.setFirstPlayer(player);
             game.setSecondPlayer("Computer");
-
             game.setFirstMove(player.getChoice());
             game.setSecondMove(computer.getChoice());
             game.getWinner();
 
-            return lowerCaseInput;
+            return userInput;
         } else {
             System.out.println("\nInvalid choice, please input 'rock', 'paper', or 'scissors'");
             computerTurn(player, computer, game);
 
-            return lowerCaseInput;
+            return userInput;
         }
 
     }
@@ -87,12 +83,10 @@ public class Main {
         game.setFirstPlayer(player1);
         game.setSecondPlayer(player2.getName());
 
-        Scanner inputScanner = new Scanner(System.in);
-        String userInput = inputScanner.nextLine();
-        String lowerCaseInput1 = userInput.toLowerCase();
+        String user1Input = userInput();
 
-        if(lowerCaseInput1.equals("rock") || lowerCaseInput1.equals("paper") || lowerCaseInput1.equals("scissors") ) {
-            player1.setChoice(lowerCaseInput1);
+        if(user1Input.equals("rock") || user1Input.equals("paper") || user1Input.equals("scissors") ) {
+            player1.setChoice(user1Input);
         } else {
             System.out.println("\nInvalid choice, please input 'rock', 'paper', or 'scissors'");
             humanTurn(player1, player2, game);
@@ -102,9 +96,9 @@ public class Main {
 
         Scanner inputScanner2 = new Scanner(System.in);
         String userInput2 = inputScanner2.nextLine();
-        String lowerCaseInput2 = userInput2.toLowerCase();
-        if(lowerCaseInput2.equals("rock") || lowerCaseInput2.equals("paper") || lowerCaseInput2.equals("scissors") ) {
-            player2.setChoice(lowerCaseInput2);
+        String luserInput2 = userInput2.toLowerCase();
+        if(userInput2.equals("rock") || userInput2.equals("paper") || userInput2.equals("scissors") ) {
+            player2.setChoice(userInput2);
         } else {
             System.out.println("\nInvalid choice, please input 'rock', 'paper', or 'scissors'");
             humanTurn(player1, player2, game);
@@ -118,13 +112,11 @@ public class Main {
     private static void playAgain(Player player1, Player player2, Computer computer, Game game) {
         System.out.println("\n\nDo you want to play again?");
 
-        Scanner inputScanner = new Scanner(System.in);
-        String userInput = inputScanner.nextLine();
-        String lowerCaseInput = userInput.toLowerCase();
+        String userInput = userInput();
 
-        if(lowerCaseInput.equals("yes")) {
+        if(userInput.equals("yes")) {
             client(player1, player2,computer, game);
-        } else if(lowerCaseInput.equals("no")) {
+        } else if(userInput.equals("no")) {
             System.out.println("\nBye!!");
             System.exit(0);
         } else {

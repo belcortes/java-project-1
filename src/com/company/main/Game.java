@@ -6,8 +6,6 @@ public class Game {
     private String secondPlayer;
     private String secondMove;
 
-    public Game(){}
-
     public void getWinner() {
         if (firstMove.equals(secondMove)) {
             System.out.println("IT'S A TIE!");
@@ -34,32 +32,17 @@ public class Game {
                 "\n"+firstPlayer.getName()+": "+firstPlayer.getScore());
     }
 
-    public String getFirstMove() {
-        return firstMove;
-    }
-
     public void setFirstMove(String firstMove) {
         this.firstMove = firstMove;
-    }
-
-    public String getSecondMove() {
-        return secondMove;
     }
 
     public void setSecondMove(String secondMove) {
         this.secondMove = secondMove;
     }
 
-    public Player getFirstPlayer() {
-        return firstPlayer;
-    }
 
     public void setFirstPlayer(Player firstPlayer) {
         this.firstPlayer = firstPlayer;
-    }
-
-    public String getSecondPlayer() {
-        return secondPlayer;
     }
 
     public void setSecondPlayer(String secondPlayer) {
