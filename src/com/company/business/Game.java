@@ -7,15 +7,17 @@ import java.util.Scanner;
 
 public class Game {
 
+    // Class variables
     private Player player1 = new Player();
     private Player player2 = new Player();
     private Computer computer = new Computer();
     private Player firstPlayer;
     private String firstMove;
-    private Player secondPlayer;
+    public Player secondPlayer;
     private String secondMove;
 
 
+    // Getters and Setters
     private void setFirstMove(String firstMove) {
         this.firstMove = firstMove;
     }
@@ -33,31 +35,30 @@ public class Game {
         this.secondPlayer = secondPlayer;
     }
 
-    public Player getSecondPlayer() {
-        return secondPlayer;
-    }
 
+    //    GAME LOGIC
     public static String userInput() {
         Scanner inputScanner = new Scanner(System.in);
         String userInput = inputScanner.nextLine();
 
-        if(userInput.toLowerCase().equals("quit")){
-            System.out.println("\nBye!!");
-            System.exit(0);
+        if (userInput != null) {
+            if(userInput.toLowerCase().equals("quit")){
+                System.out.println("\nBye!!");
+                System.exit(0);
 
-            return null;
+                return null;
+            } else {
+                return userInput.toLowerCase();
+            }
         } else {
-            return userInput.toLowerCase();
+            throw new AssertionError();
         }
     }
-
-
 
     private String player1Turn() {
         String player1Input = userInput();
         this.setFirstPlayer(player1);
         player1.setName("Player1");
-        String[] choices = {"rock", "paper", "scissors"};
 
         if(player1Input.equals("rock") || player1Input.equals("paper") || player1Input.equals("scissors") ) {
             player1.setChoice(player1Input);
@@ -72,6 +73,8 @@ public class Game {
     }
 
     public void computerTurn() {
+        System.out.println("\nType in 'rock', 'paper', or 'scissors' to play");
+
         String player1Input = this.player1Turn();
         player1.setChoice(player1Input);
 
@@ -83,11 +86,15 @@ public class Game {
     }
 
     public void player2Turn() {
+        System.out.println("\n Whoever goes first is Player1, whoever goes second is Player2"+
+                "\nPlayer1: type in 'rock', 'paper', or 'scissors' to play and pass computer to Player2");
+
         String player1Input = this.player1Turn();
         player2.setName("Player2");
         this.setSecondPlayer(player2);
 
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer2: type in 'rock', 'paper', or 'scissors' to play AND DON'T SCROLL UP");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                "Player2: type in 'rock', 'paper', or 'scissors' to play AND DON'T SCROLL UP");
 
         Scanner inputScanner2 = new Scanner(System.in);
         String userInput = inputScanner2.nextLine();
