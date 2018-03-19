@@ -47,29 +47,25 @@ public class Main {
     }
 
     private static void playAgain(Game game) {
-        System.out.println("\n\nDo you want to play again?"+
-                "\n'yes' to replay against "+game.secondPlayer.getName()+
-                "\n'no' to return to main menu");
+        System.out.println("\n\nDo you want to play again? (yes/no)");
 
         String userInput = userInput();
 
         if (userInput != null) {
+
             switch (userInput) {
                 case "yes":
-                    if (game.secondPlayer instanceof Computer) {
-                        game.computerTurn();
-                    } else {
-                        game.player2Turn();
-                    }
-                    break;
-                case "no":
                     client(game);
                     break;
+                case "no":
+                    System.out.println("\nquitting the game\nBye!!");
+                    System.exit(0);
                 default:
                     System.out.println("\n\nI didn't quite get that..");
                     playAgain(game);
                     break;
             }
+
         } else {
             throw new AssertionError();
         }

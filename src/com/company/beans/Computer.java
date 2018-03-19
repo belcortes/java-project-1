@@ -12,9 +12,4 @@ public class Computer extends Player {
         return choice;
     }
 
-    public void addScore() {
-        super.addScore();
-//        score++;
-    }
-
 }
