@@ -1,9 +1,7 @@
-package com.company.main;
-
-import java.util.LinkedList;
+package com.company.beans;
 
 public class Player {
-    private static int score = 0;
+    private int score = 0;
     private String choice;
     private String name;
 
@@ -12,7 +10,7 @@ public class Player {
     }
 
     public void addScore() {
-        this.score++;
+        score++;
     }
 
     public String getChoice() {

@@ -1,25 +1,20 @@
-package com.company.main;
+package com.company.beans;
 
-import java.util.LinkedList;
 import java.util.Random;
 
-public class Computer {
-    private static int score = 0;
+public class Computer extends Player {
     private String choice;
-
-    public int getScore() {
-        return score;
-    }
-
-    public void addScore() {
-        this.score++;
-    }
 
     public String getChoice() {
         String[] choices = {"rock", "paper", "scissors"};
         Random random = new Random();
         choice = choices[random.nextInt(choices.length)];
         return choice;
+    }
+
+    public void addScore() {
+        super.addScore();
+//        score++;
     }
 
 }
