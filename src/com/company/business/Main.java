@@ -54,17 +54,21 @@ public class Main {
         String userInput = userInput();
 
         if (userInput != null) {
-            if ("yes".equals(userInput)) {
-                if (game.secondPlayer instanceof Computer) {
-                    game.computerTurn();
-                } else {
-                    game.player2Turn();
-                }
-            } else if ("no".equals(userInput)) {
-                client(game);
-            } else {
-                System.out.println("\nI didn't quite get that.. Please type 'yes' or 'no'");
-                playAgain(game);
+            switch (userInput) {
+                case "yes":
+                    if (game.secondPlayer instanceof Computer) {
+                        game.computerTurn();
+                    } else {
+                        game.player2Turn();
+                    }
+                    break;
+                case "no":
+                    client(game);
+                    break;
+                default:
+                    System.out.println("\n\nI didn't quite get that..");
+                    playAgain(game);
+                    break;
             }
         } else {
             throw new AssertionError();

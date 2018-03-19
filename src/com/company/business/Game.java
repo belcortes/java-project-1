@@ -17,7 +17,7 @@ public class Game {
     private String secondMove;
 
 
-    // Getters and Setters
+    // Setters
     private void setFirstMove(String firstMove) {
         this.firstMove = firstMove;
     }
@@ -36,8 +36,8 @@ public class Game {
     }
 
 
-    //    GAME LOGIC
-    public static String userInput() {
+    // GAME LOGIC
+    static String userInput() {
         Scanner inputScanner = new Scanner(System.in);
         String userInput = inputScanner.nextLine();
 
@@ -73,6 +73,9 @@ public class Game {
     }
 
     public void computerTurn() {
+        computer.setName("Computer");
+        this.setSecondPlayer(computer);
+
         System.out.println("\nType in 'rock', 'paper', or 'scissors' to play");
 
         String player1Input = this.player1Turn();
@@ -80,18 +83,18 @@ public class Game {
 
         this.setFirstMove(player1.getChoice());
         this.setSecondMove(computer.getChoice());
-        computer.setName("Computer");
         this.setSecondPlayer(computer);
         this.getWinner();
     }
 
     public void player2Turn() {
+        player2.setName("Player2");
+        this.setSecondPlayer(player2);
+
         System.out.println("\n Whoever goes first is Player1, whoever goes second is Player2"+
                 "\nPlayer1: type in 'rock', 'paper', or 'scissors' to play and pass computer to Player2");
 
-        String player1Input = this.player1Turn();
-        player2.setName("Player2");
-        this.setSecondPlayer(player2);
+        String player1Input = player1Turn();
 
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
                 "Player2: type in 'rock', 'paper', or 'scissors' to play AND DON'T SCROLL UP");
