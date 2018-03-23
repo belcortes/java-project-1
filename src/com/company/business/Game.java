@@ -126,6 +126,7 @@ public class Game {
             firstPlayer.addScore();
             showScore();
         } else {
+            // Found this assert syntax online - Stack Overflow
             assert (("rock".equals(secondMove) && "scissors".equals(firstMove)) ||
                     ("scissors".equals(secondMove) && "paper".equals(firstMove)) ||
                     ("paper".equals(secondMove) && "rock".equals(firstMove)));
